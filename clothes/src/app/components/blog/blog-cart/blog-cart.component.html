@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="row">
+        @for (blog of blogDate; track $index) {
+        <div class="d-flex col-12 col-lg-6 mb-2">
+            <div class="info flex-grow-1">
+                <span class="d-block position-relative p-1 mb-2 fw-bold mx-0 button">
+                    {{blog.type|titlecase}}
+                </span>
+                <div class="date d-flex gap-4 my-3">
+                    <span class="mb-0">{{blog.name|titlecase}}</span>
+                    <span class="mb-0">{{2015}}</span>
+                </div>
+                <h3 class="lh-base description">
+                    {{blog.title |titlecase}}
+                </h3>
+            </div>
+            <div class="image">
+                <img [src]="blog.image" alt="NOT_FOUND" class="img-fluid rounded" width="200" height="200" />
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@use "../src/app/styles/variable" as *;
+
+li {
+  list-style-type: none;
+}
+
+ngb-offcanvas-panel {
+  z-index: 999999999999999999999999999999999 !important;
+}
+
+// Edit Pagination
+pagination-controls {
+  pagination-template {
+    padding: 10px;
+    background-color: $main-color !important;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: fit-content;
+    ul {
+      margin: 0 !important;
+      padding: 0;
+      li {
+        &:not(:last-of-type) {
+          margin-right: 10px;
+        }
+        a {
+          background-color: #bdc6cd;
+        }
+      }
+    }
+  }
+}

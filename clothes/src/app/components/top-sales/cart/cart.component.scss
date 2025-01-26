@@ -1,0 +1,76 @@
+@use "../../../styles/variable" as *;
+$width-icon: 35px;
+
+// Start Edit Cart
+.cart-content {
+  .image {
+    width: 300px;
+    height: 300px;
+    padding: 45px;
+    cursor: pointer !important;
+    background-color: $section-color;
+    img {
+      object-fit: cover;
+      transition: 0.8s;
+    }
+    .icons {
+      width: fit-content;
+      bottom: 0;
+      margin: calc(width-icon / 2);
+      left: 50%;
+      transform: translateX(-50%);
+      .icon {
+        transition: 0.8s;
+        background-color: $main-color;
+        padding: 0;
+        color: white;
+        width: $width-icon;
+        height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+      }
+    }
+    // Show Icons After Hover
+    &:hover {
+      img {
+        scale: 1.1;
+      }
+      .icons {
+        .icon {
+          height: $width-icon;
+          padding: 8px;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  :host ::ng-deep .carousel-item {
+    display: flex;
+  }
+  .caption {
+    left: 0;
+    right: 0;
+    width: fit-content;
+    h3 {
+      a {
+        transition: $hover-transition;
+        &:hover {
+          color: $main-color !important;
+        }
+      }
+    }
+    p {
+      color: $main-color;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .image {
+    width: 100% !important;
+  }
+}
+
+// End Cart

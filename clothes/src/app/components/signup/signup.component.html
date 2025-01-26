@@ -1,0 +1,71 @@
+<!-- Login Form -->
+<div class="container">
+    <div class="login-form position-relative">
+        <app-spinner />
+        <h3 class="text-center mb-4">{{'signup'|titlecase}}</h3>
+        <form [formGroup]="form">
+            <!--  Name -->
+            <div class="mb-3">
+                <label for="fname" class="form-label">{{"frist name"|titlecase}}</label>
+                <input type="text" class="form-control" id="fname" placeholder="Name" formControlName="name">
+
+                <p *ngIf="form.controls['name'].hasError('required')&&form.controls['name'].touched"
+                    class="text-danger">{{'* name required'|titlecase}}</p>
+
+                <p *ngIf="form.controls['name'].hasError('pattern')&&!form.controls['name'].hasError('required')&&form.controls['name'].touched"
+                    class="text-danger">{{'* enter a valid name'|titlecase}}</p>
+
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">{{"Email Address"|titlecase}}</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                    formControlName="email">
+                <p *ngIf="form.controls['email'].hasError('required')&&form.controls['email'].touched"
+                    class="text-danger">{{'* email is required'|titlecase}}</p>
+
+                <p *ngIf="form.controls['email'].hasError('pattern')&&!form.controls['email'].hasError('required')&&form.controls['email'].touched"
+                    class="text-danger">{{'* enter a valid email'|titlecase}}</p>
+            </div>
+            <!-- Password -->
+            <div class="mb-3">
+                <label for="password" class="form-label">{{'Password'|titlecase}}</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password"
+                    formControlName="password">
+
+                <p *ngIf="form.controls['password'].hasError('required')&&form.controls['password'].touched"
+                    class="text-danger">{{'* password is required'|titlecase}}</p>
+
+                <p *ngIf="form.controls['password'].hasError('pattern')&&!form.controls['password'].hasError('required')&&form.controls['password'].touched"
+                    class="text-danger">{{'* The password must contain uppercase and lowercase letters, customization\
+                    marks, and greater than 14 numbers'|titlecase}}
+                </p>
+            </div>
+            <!-- Confirm Password -->
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label">{{'confirm password'|titlecase}}</label>
+
+                <input type="password" class="form-control" id="confirm-password" placeholder="Confirm password"
+                    formControlName="confirmPassword">
+                <p *ngIf="form.controls['password'].touched&&form.controls['password'].errors==null
+                &&form.controls['confirmPassword'].touched&&form.controls['confirmPassword'].hasError('required')"
+                    class="text-danger">{{'*\
+                    confirmPassword is required'|titlecase}}</p>
+
+                <p *ngIf="form.controls['confirmPassword'].hasError('matchPassword')&&form.controls['password'].errors==null"
+                    class="text-danger">{{'* passwords isnot matched'|titlecase}}
+                </p>
+            </div>
+            <div>
+                @if(error().length>0){
+                @for (item of error(); track $index) {
+                <p class="bg-danger-subtle text-black p-3">{{"* " + item}}</p>
+                }
+                }
+            </div>
+            <button type="button" class="btn btn-custom w-100 text-white fw-bold"
+                (click)="creatUser(form)">{{'signup'|titlecase}}</button>
+        </form>
+    </div>
+</div>

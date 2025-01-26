@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand bg-body-tertiary">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand"><img src="../../../../assets/images/logo.png" [width]="106" [height]="55"></a>
+        <div class="collapse navbar-collapse ms-3">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 d-none d-lg-flex" style="--bs-scroll-height: 100px;">
+                @for (item of links; track $index) {
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="item.routerLink">{{item.tittle|titlecase}}</a>
+                </li>
+                }
+            </ul>
+
+            <form class="d-flex d-none d-lg-flex" role="search">
+                <span class="position-relative search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        [formControl]="searchControl">
+                    <div class="bg-black text-white position-absolute w-100 h-100 search-items">
+                        @if (productSearch!=[]) {
+                        <ul class="m-0 p-0">
+                            @for (product of productSearch[0]; track $index) {
+                            <li class="list-group-item p-2">
+                                <a class="text-decoration-none text-white">{{product.title}}</a>
+                            </li>
+                            }@empty {
+                            <p class="text-white d-flex justify-content-center align-items-center empty">
+                                {{'not found'|titlecase}}
+                            </p>
+                            }
+                        </ul>
+                        }
+
+
+                    </div>
+                </span>
+            </form>
+        </div>
+
+        <button class="btn text-black p-0 m-0 border border-0 ms-5 opencanv" (click)="openEnd(content)"><i
+                class="fa-solid fa-bars fs-3 bar"></i></button>
+    </div>
+</nav>
+
+
+<ng-template #content let-offcanvas>
+    <div class="h-100 bg-black py-3 offcanv" style="z-index: 9878787878787878787878787878787;">
+        <div class="offcanvas-header d-flex justify-content-between align-items-center">
+            <a class="navbar-brand"><img src="../../../../assets/images/logo.png" [width]="106" [height]="55"></a>
+            <button type="button" class="bg-black border border-0" aria-label="Close"
+                (click)="offcanvas.dismiss('Cross click')"><span class="position-relative offcanv search">
+                </span></button>
+        </div>
+        <!-- Start Links navbar -->
+        <div class="offcanvas-body mb-5">
+            <div class="ms-3">
+
+                <form role="search" class="mb-5">
+                    <span class="position-relative search">
+                        <input class="form-control me-2 text-white" type=" search"
+                            placeholder="What are you searching for?" aria-label="Search">
+                    </span>
+                </form>
+
+                <ul class="me-auto my-2 my-lg-0 text-white p-0 pages" style="--bs-scroll-height: 100px;">
+                    @for (item of links; track $index) {
+                    <li class="nav-item mb-3 position-relative pb-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="nav-link active" aria-current="page"
+                                [routerLink]="item.routerLink">{{item.tittle|titlecase}}</a>
+                        </div>
+                    </li>
+                    }
+
+                </ul>
+            </div>
+            <!-- End Links navbar -->
+
+            <!-- Start Contact  -->
+            <div class="ms-3 mt-5 fs-4">
+                <p class="text-white fw-bold">{{'contact info'|titlecase}}</p>
+
+                <ul class="me-auto my-2 my-lg-0 text-white p-0 pages contact" style="--bs-scroll-height: 100px;">
+                    @for (contact of contacts; track $index) {
+
+                    <li class="nav-item mb-3 position-relative pb-1">
+                        <div class="d-flex align-items-center gap-4 all-details">
+                            <span class="position-relative contact-icon">
+                                <i class='rounded-circle position-absolute w-100 h-100 fw-bold icon'
+                                    [ngClass]="contact.icon"></i>
+                            </span>
+                            <a aria-current="page">{{contact.title}}</a>
+                        </div>
+                    </li>
+
+                    }
+
+                </ul>
+            </div>
+            <!-- End Contact  -->
+        </div>
+
+    </div>
+</ng-template>

@@ -1,0 +1,42 @@
+@use "../../../styles/variable" as *;
+
+.all-content {
+  // start details-content
+  .details-content {
+    .new-arrival {
+      background-color: #ebe5d9;
+      width: fit-content;
+      color: $main-color;
+    }
+
+    h2 {
+      font-size: 54px;
+    }
+
+    // Start Button
+    .buttons {
+      .buy,
+      .details {
+        border-color: $main-color !important;
+        transition: 0.5s;
+      }
+
+      .buy {
+        background-color: $main-color !important;
+        &:hover {
+          background-color: transparent !important;
+          color: $main-color !important;
+        }
+      }
+      .details {
+        color: $main-color !important;
+        &:hover {
+          background-color: $main-color !important;
+          color: white !important;
+        }
+      }
+    }
+    //  End Button
+  }
+  // end details-content
+}

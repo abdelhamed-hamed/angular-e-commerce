@@ -1,0 +1,147 @@
+@use "../../styles/variable" as *;
+@use "../../styles/component" as *;
+
+.nav-item {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 3px;
+  cursor: pointer;
+}
+
+.search {
+  input {
+    border-radius: 25px;
+    padding: 10px;
+  }
+
+  &::after {
+    content: "\f002";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 23%;
+    height: 100%;
+    background-color: $main-color;
+    cursor: pointer;
+    border-radius: 50%;
+    color: white;
+    @extend %flex-center;
+  }
+}
+
+.bar {
+  cursor: pointer;
+}
+
+.opencanv {
+  width: fit-content;
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
+.offcanv {
+  form {
+    .search {
+      input {
+        border: 0;
+        border-radius: 0;
+        background-color: transparent !important;
+        &:focus {
+          box-shadow: none;
+          border-bottom: 1px solid white !important;
+        }
+        &::placeholder {
+          color: white !important;
+        }
+      }
+      &::after {
+        background-color: transparent !important;
+        width: 0;
+        height: 0;
+        right: 20px;
+      }
+    }
+  }
+
+  .pages {
+    li {
+      transition: $hover-transition;
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(64, 58, 58, 0.747);
+      }
+      &:hover {
+        color: $main-color;
+      }
+      .content {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.offcanv.search {
+  &::after {
+    content: "\58";
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.pages.contact {
+  li {
+    font-size: 15px !important;
+    border-bottom: 0 !important;
+    .all-details {
+      .contact-icon {
+        transition: $hover-transition;
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        border-radius: 50% !important;
+        .icon {
+          border: 1px solid gray;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          @extend %flex-center;
+        }
+      }
+      &:hover {
+        color: $main-color;
+        .contact-icon {
+          color: black;
+          background-color: $main-color;
+        }
+      }
+    }
+  }
+}
+// Search Items
+.search {
+  .search-items {
+    z-index: 999999999;
+    height: 0 !important;
+    visibility: hidden !important;
+    transition: 1s;
+    overflow-y: auto !important;
+    ul li {
+      cursor: pointer;
+    }
+  }
+  &:hover {
+    .search-items {
+      height: 100px !important;
+      visibility: visible !important;
+    }
+  }
+  .empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+}

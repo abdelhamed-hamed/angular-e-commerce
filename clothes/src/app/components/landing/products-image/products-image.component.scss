@@ -1,0 +1,30 @@
+@use "../../../styles/variable" as *;
+ngb-carousel {
+  width: 400px !important;
+}
+
+:host ::ng-deep .carousel-indicators {
+  bottom: -30px;
+  margin-bottom: 0;
+  button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $main-color;
+  }
+}
+//Start Edit Dot Control Slideshow
+@media (min-width: 992px) {
+  :host ::ng-deep .carousel-indicators {
+    flex-direction: column;
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    left: unset;
+    bottom: unset;
+  }
+}
+//End Edit Dot Control Slideshow

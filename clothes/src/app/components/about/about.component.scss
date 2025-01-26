@@ -1,0 +1,15 @@
+@use "../../styles/variable" as *;
+
+.about-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+  padding: 30px;
+}
+.btn-custom {
+  background-color: $main-color;
+  color: #fff;
+  &:hover {
+    background-color: $hover-color;
+  }
+}

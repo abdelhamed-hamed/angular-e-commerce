@@ -1,0 +1,9 @@
+@use "../../../styles/variable" as *;
+.button {
+  background-color: #ebe5d9;
+  width: fit-content;
+  color: $main-color;
+}
+.date {
+  color: gray !important;
+}

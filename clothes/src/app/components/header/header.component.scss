@@ -1,0 +1,47 @@
+@use "../../styles/variable" as *;
+
+.header {
+  --padding: 7px;
+  --transition: 100ms;
+
+  padding: var(--padding, 5px);
+  background-color: $main-color;
+  .coupoun {
+    font-size: 13px;
+  }
+
+  .drop {
+    width: fit-content;
+    margin-right: 30px;
+    cursor: pointer;
+    &:focus + .ul-drop {
+      visibility: visible !important;
+    }
+    .drop-tittle {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 105%;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #fff;
+      }
+    }
+
+    .ul-drop {
+      z-index: 99999;
+      transition: var(--transition);
+      background-color: white !important;
+      //   visibility: hidden;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      top: calc(100% + var(--padding, 5px));
+      right: -27%;
+      li {
+        cursor: pointer;
+      }
+    }
+  }
+}

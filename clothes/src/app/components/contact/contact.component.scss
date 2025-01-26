@@ -1,0 +1,18 @@
+@use "../../styles/variable" as *;
+
+.contact-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+}
+.btn-custom {
+  background-color: $main-color;
+  color: #fff;
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+.note {
+  resize: none;
+}

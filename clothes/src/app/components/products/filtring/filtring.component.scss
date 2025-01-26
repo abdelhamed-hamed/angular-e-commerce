@@ -1,0 +1,13 @@
+@use "@app/variable" as *;
+
+select {
+  padding: 5px;
+}
+
+.btn-custom {
+  background-color: $main-color;
+  color: #fff;
+  &:hover {
+    background-color: $hover-color;
+  }
+}

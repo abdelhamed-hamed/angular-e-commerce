@@ -1,0 +1,11 @@
+.spinner {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  position: absolute;
+  z-index: 9999999999999999;
+}
+:host ::ng-deep .ngx-spinner-overlay {
+  width: 100px !important;
+  height: 100px !important;
+}

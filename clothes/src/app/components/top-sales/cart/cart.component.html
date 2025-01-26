@@ -1,0 +1,43 @@
+<div class="row position-relative">
+    <app-spinner />
+    @if(products()){
+
+    @for (product of products()! | paginate: { itemsPerPage: 8, currentPage: p }; track $index) {
+
+    <div class="cart-content mb-4 col-12 col-md-6 col-lg-4 col-xxl-3 position-relative">
+
+        <div class="d-flex justify-content-center align-items-center w-100 image">
+            <div class="position-relative">
+                <img [src]="product.images" [alt]="product.title" width="200" height="200" />
+                <div class="position-absolute d-flex gap-2 icons">
+
+                    @for (icon of icons; track $index) {
+                    <span class="rounded-circle icon"><a class="text-white" [routerLink]="icon.routerLink"><i
+                                [class]="icon.icon"></i></a></span>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="position-relative text-dark my-3 caption">
+            <h3>
+                <a class="text-decoration-none text-dark" routerLink="sds">
+                    {{product.title|titlecase}}
+                </a>
+            </h3>
+            <p class="position-relative fs-5 text-start">{{product.price}}</p>
+        </div>
+
+    </div>
+
+    }
+    }@else {
+    <p class="bg-danger-subtle text-dark fs-3 fw-bold p-3">{{'No products found'|titlecase}}</p>
+    }
+
+
+</div>
+
+<pagination-controls class="text-center d-block text-center" *ngIf="products()" (pageChange)="p=$event" previousLabel=""
+    [directionLinks]='false' nextLabel=""></pagination-controls>

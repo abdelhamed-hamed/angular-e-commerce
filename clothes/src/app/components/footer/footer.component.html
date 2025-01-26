@@ -1,0 +1,68 @@
+<div class="footer">
+    <div class="container overflow-x-hidden">
+        <div class="row gx-5">
+            <!--Start Logo And Social -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4 logo">
+                <a class="navbar-brand"><img src="../../../../assets/images/logo.png" [width]="106" [height]="55"></a>
+                <P class="my-5 lh-base opacity">{{'It helps designers plan out where the content will sit, the content\
+                    to be\
+                    written\
+                    and\
+                    approved.'|titlecase}}</P>
+                <div class="mb-4 d-flex gap-2">
+                    @for (icon of icons; track $index) {
+                    <span
+                        class="rounded-circle mb-4 p-2 bg-white d-flex justify-content-center align-item-center icon"><a
+                            target="_blank" class="text-white" [href]="icon.routerLink"><i [class]="icon.icon"
+                                ngClass="text-black fs-4"></i></a></span>
+                    }
+                </div>
+            </div>
+            <!--End Logo And Social -->
+
+            <!-- Start Links -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4 company">
+                <h2 class="mb-5">{{'company'|titlecase}}</h2>
+                @for (link of links; track $index) {
+                <span class="d-block mb-3 fs-5 position-relative company-links opacity" [routerLink]="link.routerLink"
+                    (click)="scrollTop()">{{link.tittle|titlecase}}</span>
+                }
+            </div>
+            <!-- End Links -->
+
+            <!-- Start Contact  -->
+            <div class="col-12 col-md-6 col-lg-4 fs-4">
+                <p class="text-white fw-bold mb-5">{{'contact'|titlecase}}</p>
+
+                <ul class="me-auto my-2 my-lg-0 text-white p-0 pages contact" style="--bs-scroll-height: 100px;">
+                    @for (contact of contacts; track $index) {
+
+                    <li class="nav-item mb-3 position-relative pb-1 mb-3">
+                        <div class="d-flex align-items-center gap-4 all-details">
+                            <span class="position-relative contact-icon">
+                                <i class='rounded-circle position-absolute text-white w-100 h-100 fw-bold icon'
+                                    [ngClass]="contact.icon"></i>
+                            </span>
+                            <a aria-current="page" class="opacity text-decoration-none text-white">{{contact.title}}</a>
+                        </div>
+                    </li>
+
+                    }
+
+                </ul>
+            </div>
+            <!-- End Contact  -->
+        </div>
+        <hr>
+        <div class="row gx-5 mt-5 justify-content-between">
+            <p class="col-12 col-md-6 mb-4 fw-bold">{{'&copy; All Copyright'|titlecase}} {{date|date:'yyyy'}}</p>
+            <div class=" col-12 col-md-6 mb-4 paying">
+                <div class="d-flex gap-2">
+                    @for (image of paying; track $index) {
+                    <img [src]="image" alt="NOT_FOUND">
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

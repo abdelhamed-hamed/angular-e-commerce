@@ -1,0 +1,36 @@
+<div class="container my-5">
+    <div class="my-5">
+        <h2 class="mb-4">{{'filtring by'|titlecase}}</h2>
+        <div class="row">
+
+            <div class="col-12 col-md-6 mb-3">
+                <label for="min-price" class="d-block mb-2">{{'minimum price'|titlecase}}</label>
+                <select value="" id="min-price" class="w-100" #min>
+                    @for (option of minPrice; track $index) {
+                    <option name="" id="" [value]="option">{{option}}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+                <label for="max-price" class="d-block mb-2">{{'maximum price'|titlecase}}</label>
+
+                <select value="" id="max-price" class="w-100" #max>
+                    @for (option of maxPrice; track $index) {
+                    <option name="" id="" [value]="option">{{option}}</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-custom text-center mt-5 w-50 d-block mx-auto" [routerLink]="['/home/products']"
+            (click)="filterProducts(+min.value,+max.value)">{{'filter\
+            products'|titlecase}}</button>
+    </div>
+    <div class="positon-relative">
+
+        <app-title title="products" section="our Product" />
+        <app-cart [products]="allProducts[0]" />
+
+    </div>
+</div>

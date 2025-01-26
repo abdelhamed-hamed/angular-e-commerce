@@ -1,0 +1,45 @@
+<!-- Login Form -->
+<div class="container">
+    <div class="login-form position-relative">
+        <app-spinner />
+        <h3 class="text-center mb-4">{{'Login'|titlecase}}</h3>
+        <form [formGroup]="form">
+
+            <div class="mb-3">
+                <label for="email" class="form-label">{{"Email Address"|titlecase}}</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                    formControlName="email">
+
+                <p *ngIf="form.controls['email'].hasError('required')&&form.controls['email'].touched"
+                    class="text-danger">{{'* email is required'|titlecase}}</p>
+
+                <p *ngIf="form.controls['email'].hasError('pattern')&&!form.controls['email'].hasError('required')&&form.controls['email'].touched"
+                    class="text-danger">{{'* enter a valid email'|titlecase}}</p>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">{{'Password'|titlecase}}</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password"
+                    formControlName="password">
+                <p *ngIf="form.controls['password'].hasError('required')&&form.controls['password'].touched"
+                    class="text-danger">{{'* password is required'|titlecase}}</p>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">{{'Remember Me'|titlecase}}</label>
+            </div>
+
+            <div>
+                @if(error()!==''){
+                <p class="bg-danger-subtle text-black p-3">{{"* " + error()}}</p>
+                }
+            </div>
+            <button type="submit" class="btn btn-custom w-100 text-white fw-bold"
+                (click)="loginUser()">{{'Login'|titlecase}}</button>
+            <!-- <div class="text-center mt-3">
+                <a href="#" class="text-decoration-none">Forgot Password?</a>
+            </div> -->
+        </form>
+    </div>
+</div>

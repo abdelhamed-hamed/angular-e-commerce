@@ -1,0 +1,15 @@
+@use "../../styles/variable" as *;
+
+.login-form {
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+  padding: 30px;
+  max-width: 400px;
+  margin: 50px auto;
+}
+.btn-custom {
+  background-color: $main-color;
+  &:hover {
+    background-color: $hover-color;
+  }
+}
